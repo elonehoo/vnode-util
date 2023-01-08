@@ -1,22 +1,21 @@
 import {
-  cloneVNode,
   Comment,
   type Component,
   type ComponentOptions,
-  createCommentVNode,
-  createTextVNode,
   Fragment,
   type FunctionalComponent,
-  isVNode,
   Static,
   Text,
   type VNode,
   type VNodeArrayChildren,
-  type VNodeChild
+  type VNodeChild,
+  cloneVNode,
+  createCommentVNode,
+  createTextVNode,
+  isVNode,
 } from 'vue'
 
 const DEV = process.env.NODE_ENV !== 'production'
-
 
 export const isComment = (vnode: unknown): vnode is (null | undefined | boolean | (VNode & { type: Comment })) => {
   return getType(vnode) === 'comment'
@@ -51,17 +50,14 @@ export const isText = (vnode: unknown): vnode is (string | number | (VNode & { t
 }
 
 export const getText = (vnode: VNode | string | number): string | undefined => {
-  if (typeof vnode === 'string') {
+  if (typeof vnode === 'string')
     return vnode
-  }
 
-  if (typeof vnode === 'number') {
+  if (typeof vnode === 'number')
     return String(vnode)
-  }
 
-  if (isVNode(vnode) && vnode.type === Text) {
+  if (isVNode(vnode) && vnode.type === Text)
     return String(vnode.children)
-  }
 
   return undefined
 }
@@ -72,17 +68,16 @@ const typeOf = (value: unknown) => {
   let t: ValueTypes = typeof value
 
   if (t === 'object') {
-    if (value === null) {
+    if (value === null)
       t = 'null'
-    } else if (Array.isArray(value)) {
+    else if (Array.isArray(value))
       t = 'array'
-    } else if (isVNode(value)) {
+    else if (isVNode(value))
       t = 'vnode'
-    } else if (value instanceof Date) {
+    else if (value instanceof Date)
       t = 'date'
-    } else if (value instanceof RegExp) {
+    else if (value instanceof RegExp)
       t = 'regexp'
-    }
   }
 
   return t
@@ -97,40 +92,39 @@ const checkArguments = (method: string, passed: unknown[], expected: string[]) =
     const t = typeOf(passed[index])
     const expect = expected[index]
 
-    if (expect !== t) {
+    if (expect !== t)
       warn(method, `Argument ${index + 1} was ${t}, should be ${expect}`)
-    }
   }
 }
 
 export const getType = (vnode: unknown) => {
   const typeofVNode = typeof vnode
 
-  if (vnode == null || typeofVNode === 'boolean') {
+  if (vnode == null || typeofVNode === 'boolean')
     return 'comment'
-  } else if (typeofVNode === 'string' || typeofVNode === 'number') {
+  else if (typeofVNode === 'string' || typeofVNode === 'number')
     return 'text'
-  } else if (Array.isArray(vnode)) {
+  else if (Array.isArray(vnode))
     return 'fragment'
-  }
 
   if (isVNode(vnode)) {
     const { type } = vnode
     const typeofType = typeof type
 
     if (typeofType === 'symbol') {
-      if (type === Fragment) {
+      if (type === Fragment)
         return 'fragment'
-      } else if (type === Text) {
+      else if (type === Text)
         return 'text'
-      } else if (type === Comment) {
+      else if (type === Comment)
         return 'comment'
-      } else if (type === Static) {
+      else if (type === Static)
         return 'static'
-      }
-    } else if (typeofType === 'string') {
+    }
+    else if (typeofType === 'string') {
       return 'element'
-    } else if (typeofType === 'object' || typeofType === 'function') {
+    }
+    else if (typeofType === 'object' || typeofType === 'function') {
       return 'component'
     }
   }
@@ -139,33 +133,29 @@ export const getType = (vnode: unknown) => {
 }
 
 const isEmptyObject = (obj: Record<string, unknown>) => {
-  //@ts-ignore
-  for (const prop in obj) {
+  // @ts-expect-error
+  for (const prop in obj)
     return false
-  }
 
   return true
 }
 
 const getFragmentChildren = (fragmentVNode: VNode | VNodeArrayChildren): VNodeArrayChildren => {
-  if (Array.isArray(fragmentVNode)) {
+  if (Array.isArray(fragmentVNode))
     return fragmentVNode
-  }
 
   const { children } = fragmentVNode
 
-  if (Array.isArray(children)) {
+  if (Array.isArray(children))
     return children
-  }
 
-  if (DEV) {
+  if (DEV)
     warn('getFragmentChildren', `Unknown children for fragment: ${typeOf(children)}`)
-  }
 
   return []
 }
 
-export type IterationOptions = {
+export interface IterationOptions {
   element?: boolean
   component?: boolean
   comment?: boolean
@@ -175,48 +165,44 @@ export type IterationOptions = {
 
 // esbuild can remove an identity function, so long as it uses a function declaration
 function freeze<T>(obj: T): T {
-  if (DEV) {
+  if (DEV)
     return Object.freeze(obj)
-  }
 
   return obj
 }
 
-export const COMPONENTS_AND_ELEMENTS: IterationOptions = /*#__PURE__*/ freeze({
-  element: true,
-  component: true
-})
-
-export const SKIP_COMMENTS: IterationOptions = /*#__PURE__*/ freeze({
+export const COMPONENTS_AND_ELEMENTS: IterationOptions = /* #__PURE__ */ freeze({
   element: true,
   component: true,
-  text: true,
-  static: true
 })
 
-export const ALL_VNODES: IterationOptions = /*#__PURE__*/ freeze({
+export const SKIP_COMMENTS: IterationOptions = /* #__PURE__ */ freeze({
   element: true,
   component: true,
   text: true,
   static: true,
-  comment: true
+})
+
+export const ALL_VNODES: IterationOptions = /* #__PURE__ */ freeze({
+  element: true,
+  component: true,
+  text: true,
+  static: true,
+  comment: true,
 })
 
 const promoteToVNode = (node: VNode | string | number | boolean | null | undefined | void, options: IterationOptions): VNode | null => {
   const type = getType(node)
 
   // In practice, we don't call this function for fragments, but TS gets unhappy if we don't handle it
-  if (!type || type === 'fragment' || !options[type]) {
+  if (!type || type === 'fragment' || !options[type])
     return null
-  }
 
-  if (isVNode(node)) {
+  if (isVNode(node))
     return node
-  }
 
-  if (type === 'text') {
+  if (type === 'text')
     return createTextVNode(getText(node as (string | number)))
-  }
 
   return createCommentVNode()
 }
@@ -224,38 +210,34 @@ const promoteToVNode = (node: VNode | string | number | boolean | null | undefin
 export const addProps = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => (Record<string, unknown> | null | void),
-  options: IterationOptions = COMPONENTS_AND_ELEMENTS
+  options: IterationOptions = COMPONENTS_AND_ELEMENTS,
 ): VNodeArrayChildren => {
-  if (DEV) {
+  if (DEV)
     checkArguments('addProps', [children, callback, options], ['array', 'function', 'object'])
-  }
 
-  //@ts-ignore
+  // @ts-expect-error
   return replaceChildrenInternal(children, (vnode) => {
     const props = callback(vnode)
 
     if (DEV) {
       const typeofProps = typeOf(props)
 
-      if (!['object', 'null', 'undefined'].includes(typeofProps)) {
+      if (!['object', 'null', 'undefined'].includes(typeofProps))
         warn('addProps', `Callback returned unexpected ${typeofProps}: ${String(props)}`)
-      }
     }
 
-    if (props && !isEmptyObject(props)) {
+    if (props && !isEmptyObject(props))
       return cloneVNode(vnode, props, true)
-    }
   }, options)
 }
 
 export const replaceChildren = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => (VNode | VNodeArrayChildren | string | number | void),
-  options: IterationOptions = SKIP_COMMENTS
+  options: IterationOptions = SKIP_COMMENTS,
 ): VNodeArrayChildren => {
-  if (DEV) {
+  if (DEV)
     checkArguments('replaceChildren', [children, callback, options], ['array', 'function', 'object'])
-  }
 
   return replaceChildrenInternal(children, callback, options)
 }
@@ -263,7 +245,7 @@ export const replaceChildren = (
 const replaceChildrenInternal = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => (VNode | VNodeArrayChildren | string | number | void),
-  options: IterationOptions
+  options: IterationOptions,
 ): VNodeArrayChildren => {
   let nc: VNodeArrayChildren | null = null
 
@@ -281,7 +263,8 @@ const replaceChildrenInternal = (
 
         if (Array.isArray(child)) {
           newChild = newFragmentChildren
-        } else {
+        }
+        else {
           newChild = cloneVNode(child)
 
           newChild.children = newFragmentChildren
@@ -289,7 +272,8 @@ const replaceChildrenInternal = (
       }
 
       nc && nc.push(newChild)
-    } else {
+    }
+    else {
       const vnode = promoteToVNode(child, options)
 
       if (vnode) {
@@ -298,21 +282,19 @@ const replaceChildrenInternal = (
         if (DEV) {
           const typeOfNewNodes = typeOf(newNodes)
 
-          if (!['array', 'vnode', 'string', 'number', 'undefined'].includes(typeOfNewNodes)) {
+          if (!['array', 'vnode', 'string', 'number', 'undefined'].includes(typeOfNewNodes))
             warn('replaceChildren', `Callback returned unexpected ${typeOfNewNodes} ${String(newNodes)}`)
-          }
         }
 
-        if (newNodes !== child) {
+        if (newNodes !== child)
           nc ??= children.slice(0, index)
-        }
 
-        if (Array.isArray(newNodes)) {
+        if (Array.isArray(newNodes))
           nc && nc.push(...newNodes)
-        } else {
+        else
           nc && nc.push(newNodes)
-        }
-      } else {
+      }
+      else {
         nc && nc.push(child)
       }
     }
@@ -324,16 +306,15 @@ const replaceChildrenInternal = (
 export const betweenChildren = (
   children: VNodeArrayChildren,
   callback: (previousVNode: VNode, nextVNode: VNode) => (VNode | VNodeArrayChildren | string | number | void),
-  options: IterationOptions = SKIP_COMMENTS
+  options: IterationOptions = SKIP_COMMENTS,
 ): VNodeArrayChildren => {
-  if (DEV) {
+  if (DEV)
     checkArguments('betweenChildren', [children, callback, options], ['array', 'function', 'object'])
-  }
 
   let previousVNode: VNode | null = null
 
-  return replaceChildrenInternal(children, vnode => {
-    let insertedNodes: VNode | VNodeArrayChildren | string | number | void = undefined
+  return replaceChildrenInternal(children, (vnode) => {
+    let insertedNodes: VNode | VNodeArrayChildren | string | number | void
 
     if (previousVNode) {
       insertedNodes = callback(previousVNode, vnode)
@@ -341,21 +322,18 @@ export const betweenChildren = (
       if (DEV) {
         const typeOfInsertedNodes = typeOf(insertedNodes)
 
-        if (!['array', 'vnode', 'string', 'number', 'undefined'].includes(typeOfInsertedNodes)) {
+        if (!['array', 'vnode', 'string', 'number', 'undefined'].includes(typeOfInsertedNodes))
           warn('betweenChildren', `Callback returned unexpected ${typeOfInsertedNodes} ${String(insertedNodes)}`)
-        }
       }
     }
 
     previousVNode = vnode
 
-    if (insertedNodes == null || (Array.isArray(insertedNodes) && insertedNodes.length === 0)) {
+    if (insertedNodes == null || (Array.isArray(insertedNodes) && insertedNodes.length === 0))
       return
-    }
 
-    if (Array.isArray(insertedNodes)) {
+    if (Array.isArray(insertedNodes))
       return [...insertedNodes, vnode]
-    }
 
     return [insertedNodes, vnode]
   }, options)
@@ -364,11 +342,10 @@ export const betweenChildren = (
 export const someChild = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => unknown,
-  options: IterationOptions = ALL_VNODES
+  options: IterationOptions = ALL_VNODES,
 ): boolean => {
-  if (DEV) {
+  if (DEV)
     checkArguments('someChild', [children, callback, options], ['array', 'function', 'object'])
-  }
 
   return someChildInternal(children, callback, options)
 }
@@ -376,19 +353,18 @@ export const someChild = (
 const someChildInternal = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => unknown,
-  options: IterationOptions
+  options: IterationOptions,
 ): boolean => {
   for (const child of children) {
     if (isFragment(child)) {
-      if (someChild(getFragmentChildren(child), callback, options)) {
+      if (someChild(getFragmentChildren(child), callback, options))
         return true
-      }
-    } else {
+    }
+    else {
       const vnode = promoteToVNode(child, options)
 
-      if (vnode && callback(vnode)) {
+      if (vnode && callback(vnode))
         return true
-      }
     }
   }
 
@@ -398,23 +374,21 @@ const someChildInternal = (
 export const everyChild = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => unknown,
-  options: IterationOptions = ALL_VNODES
+  options: IterationOptions = ALL_VNODES,
 ): boolean => {
-  if (DEV) {
+  if (DEV)
     checkArguments('everyChild', [children, callback, options], ['array', 'function', 'object'])
-  }
 
-  return !someChildInternal(children, (vnode) => !callback(vnode), options)
+  return !someChildInternal(children, vnode => !callback(vnode), options)
 }
 
 export const eachChild = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => void,
-  options: IterationOptions = ALL_VNODES
+  options: IterationOptions = ALL_VNODES,
 ): void => {
-  if (DEV) {
+  if (DEV)
     checkArguments('eachChild', [children, callback, options], ['array', 'function', 'object'])
-  }
 
   someChildInternal(children, (vnode) => {
     callback(vnode)
@@ -424,15 +398,14 @@ export const eachChild = (
 export const findChild = (
   children: VNodeArrayChildren,
   callback: (vnode: VNode) => unknown,
-  options: IterationOptions = ALL_VNODES
+  options: IterationOptions = ALL_VNODES,
 ): (VNode | undefined) => {
-  if (DEV) {
+  if (DEV)
     checkArguments('findChild', [children, callback, options], ['array', 'function', 'object'])
-  }
 
-  let node: VNode | undefined = undefined
+  let node: VNode | undefined
 
-  //@ts-ignore
+  // @ts-expect-error
   someChildInternal(children, (vnode) => {
     if (callback(vnode)) {
       node = vnode
@@ -443,12 +416,11 @@ export const findChild = (
   return node
 }
 
-const COLLAPSIBLE_WHITESPACE_RE = /\S|\u00a0/
+const COLLAPSIBLE_WHITESPACE_RE = /\S|\u00A0/
 
 export const isEmpty = (children: VNodeArrayChildren): boolean => {
-  if (DEV) {
+  if (DEV)
     checkArguments('isEmpty', [children], ['array'])
-  }
 
   return !someChildInternal(children, (vnode) => {
     if (isText(vnode)) {
@@ -462,33 +434,32 @@ export const isEmpty = (children: VNodeArrayChildren): boolean => {
 }
 
 export const extractSingleChild = (children: VNodeArrayChildren): VNode | undefined => {
-  if (DEV) {
+  if (DEV)
     checkArguments('extractSingleChild', [children], ['array'])
-  }
 
   const node = findChild(children, () => {
     return true
   }, COMPONENTS_AND_ELEMENTS)
 
   if (DEV) {
-    //@ts-ignore
+    // @ts-expect-error
     someChildInternal(children, (vnode) => {
       let warning = ''
 
       // The equality check is valid here as matching nodes can't come from promotions
-      if (vnode === node) {
+      if (vnode === node)
         return false
-      }
 
       if (isElement(vnode) || isComponent(vnode)) {
         warning = 'Multiple root nodes found, only one expected'
-      } else if (isText(vnode)) {
+      }
+      else if (isText(vnode)) {
         const text = getText(vnode) || ''
 
-        if (COLLAPSIBLE_WHITESPACE_RE.test(text)) {
+        if (COLLAPSIBLE_WHITESPACE_RE.test(text))
           warning = `Non-empty text node:\n'${text}'`
-        }
-      } else {
+      }
+      else {
         warning = `Encountered unexpected ${getType(vnode)} VNode`
       }
 

@@ -2,25 +2,26 @@ import { describe, expect, it } from 'vitest'
 import {
   Comment,
   type Component,
-  createCommentVNode,
-  createStaticVNode,
-  createVNode,
-  createTextVNode,
-  defineAsyncComponent,
   Fragment,
-  h,
-  isVNode,
-  ref,
   Text,
   type VNode,
   type VNodeArrayChildren,
-  type VNodeChild
+  type VNodeChild,
+  createCommentVNode,
+  createStaticVNode,
+  createTextVNode,
+  createVNode,
+  defineAsyncComponent,
+  h,
+  isVNode,
+  ref,
 } from 'vue'
 import {
-  addProps,
   ALL_VNODES,
-  betweenChildren,
   COMPONENTS_AND_ELEMENTS,
+  SKIP_COMMENTS,
+  addProps,
+  betweenChildren,
   eachChild,
   everyChild,
   extractSingleChild,
@@ -37,24 +38,21 @@ import {
   isStatic,
   isText,
   replaceChildren,
-  SKIP_COMMENTS,
-  someChild
+  someChild,
 } from 'vnode-util'
 
 type TreeNode = string | number | null | undefined | boolean | [string | typeof Fragment | Component, (Record<string, any> | null)?, TreeNode[]?]
 
 function createTree(root: TreeNode): VNode {
-  if (root == null || typeof root === 'boolean') {
+  if (root == null || typeof root === 'boolean')
     return createCommentVNode()
-  }
 
-  if (typeof root === 'string' || typeof root === 'number') {
+  if (typeof root === 'string' || typeof root === 'number')
     return createTextVNode(String(root))
-  }
 
   const [type, props, children] = root
 
-  const childVNodes = children && children.map(child => {
+  const childVNodes = children && children.map((child) => {
     return createTree(child)
   })
 
@@ -62,17 +60,14 @@ function createTree(root: TreeNode): VNode {
 }
 
 function toVNode(node: VNodeChild): VNode {
-  if (isVNode(node)) {
+  if (isVNode(node))
     return node
-  }
 
-  if (Array.isArray(node)) {
+  if (Array.isArray(node))
     return createVNode(Fragment, null, node)
-  }
 
-  if (typeof node === 'string' || typeof node === 'number') {
+  if (typeof node === 'string' || typeof node === 'number')
     return createTextVNode(String(node))
-  }
 
   return createCommentVNode()
 }
@@ -80,9 +75,8 @@ function toVNode(node: VNodeChild): VNode {
 function compareChildren(vnodes: VNodeArrayChildren, expectation: VNodeArrayChildren) {
   expect(vnodes).toHaveLength(expectation.length)
 
-  for (let index = 0; index < Math.min(vnodes.length, expectation.length); ++index) {
+  for (let index = 0; index < Math.min(vnodes.length, expectation.length); ++index)
     compareNode(toVNode(vnodes[index]), toVNode(expectation[index]))
-  }
 }
 
 function compareNode(vnode: VNode, expectation: VNode) {
@@ -102,15 +96,13 @@ function compareNode(vnode: VNode, expectation: VNode) {
       throw new Error(`Unexpected vnode type: ${typeof expectation.type}`)
   }
 
-  if (expectation.props == null) {
+  if (expectation.props == null)
     expect(vnode.props == null).toBe(true)
-  } else {
+  else
     expect(vnode.props).toMatchObject(expectation.props)
-  }
 
-  if (expectation.type === Comment) {
+  if (expectation.type === Comment)
     return
-  }
 
   if (expectation.type === Text) {
     expect(vnode.children).toBe(expectation.children)
@@ -120,7 +112,8 @@ function compareNode(vnode: VNode, expectation: VNode) {
   if (expectation.children == null) {
     expect(vnode.children == null).toBe(true)
     return
-  } else {
+  }
+  else {
     expect(vnode.children == null).toBe(false)
   }
 
@@ -141,7 +134,7 @@ describe('addProps', () => {
       expect(vnode.props).toBe(null)
 
       return {
-        class: 'red'
+        class: 'red',
       }
     })
 
@@ -175,7 +168,7 @@ describe('addProps', () => {
       expect(vnode.props).toBe(null)
 
       return {
-        class: 'red'
+        class: 'red',
       }
     })
 
@@ -213,22 +206,22 @@ describe('addProps', () => {
           ['div', { class: 'bold', attribute: 'value' }],
           [Fragment, null, [
             ['span', {}, ['more text']],
-          ]]
-        ]
+          ]],
+        ],
       ]),
       createTree([
         Fragment, null, [
           null,
-          [{ template: 'abc' }, { class: 'dark' }]
-        ]
-      ])
+          [{ template: 'abc' }, { class: 'dark' }],
+        ],
+      ]),
     ]
 
     const nodes = addProps(startNodes, (vnode) => {
       calledFor.push(vnode)
 
       return {
-        class: 'red'
+        class: 'red',
       }
     })
 
@@ -244,11 +237,11 @@ describe('addProps', () => {
         h('div', { class: 'bold red', attribute: 'value' }),
         [
           h('span', { class: 'red' }, 'more text'),
-        ]
+        ],
       ], [
         null,
-        h({ template: 'abc' }, { class: 'dark red' })
-      ]
+        h({ template: 'abc' }, { class: 'dark red' }),
+      ],
     ])
 
     compareChildren(startNodes, [
@@ -257,11 +250,11 @@ describe('addProps', () => {
         h('div', { class: 'bold', attribute: 'value' }),
         [
           h('span', {}, 'more text'),
-        ]
+        ],
       ], [
         null,
-        h({ template: 'abc' }, { class: 'dark' })
-      ]
+        h({ template: 'abc' }, { class: 'dark' }),
+      ],
     ])
   })
 
@@ -279,7 +272,7 @@ describe('addProps', () => {
           h('p'),
           h({ template: 'abc' }),
           h(() => 'hi'),
-          11
+          11,
         ],
         'More text',
         false,
@@ -289,7 +282,7 @@ describe('addProps', () => {
         h('div'),
         h({ template: 'def' }),
         h(() => 'bye'),
-        12
+        12,
       ]
     }
 
@@ -299,7 +292,7 @@ describe('addProps', () => {
       calledFor.push(vnode)
 
       return {
-        class: 'red'
+        class: 'red',
       }
     })
 
@@ -324,7 +317,7 @@ describe('addProps', () => {
         h('p', { class: 'red' }),
         h({ template: 'abc' }, { class: 'red' }),
         h(() => 'hi', { class: 'red' }),
-        11
+        11,
       ],
       'More text',
       false,
@@ -334,7 +327,7 @@ describe('addProps', () => {
       h('div', { class: 'red' }),
       h({ template: 'def' }, { class: 'red' }),
       h(() => 'bye', { class: 'red' }),
-      12
+      12,
     ])
 
     compareChildren(startNodes, getStartNodes())
@@ -369,7 +362,7 @@ describe('addProps', () => {
       expect(isElement(vnode)).toBe(true)
 
       return {
-        class: 'red'
+        class: 'red',
       }
     }, { element: true })
 
@@ -386,7 +379,7 @@ describe('addProps', () => {
       expect(isComponent(vnode)).toBe(true)
 
       return {
-        class: 'red'
+        class: 'red',
       }
     }, { component: true })
 
@@ -409,7 +402,7 @@ describe('addProps', () => {
 
       if (vnode.type === 'div') {
         return {
-          class: 'red'
+          class: 'red',
         }
       }
     })
@@ -438,7 +431,7 @@ describe('addProps', () => {
       return {
         ref: otherRef,
         class: 'large',
-        style: 'line-height: 1'
+        style: 'line-height: 1',
       }
     })
 
@@ -573,15 +566,15 @@ describe('replaceChildren', () => {
           ['div', { class: 'bold', attribute: 'value' }],
           [Fragment, null, [
             ['span', {}, ['more text']],
-          ]]
-        ]
+          ]],
+        ],
       ]),
       createTree([
         Fragment, null, [
           null,
-          [{ template: 'abc' }, { class: 'dark' }]
-        ]
-      ])
+          [{ template: 'abc' }, { class: 'dark' }],
+        ],
+      ]),
     ]
 
     const nodes = replaceChildren(startNodes, (vnode) => {
@@ -599,12 +592,12 @@ describe('replaceChildren', () => {
         'text node',
         h('div', { class: 'bold', attribute: 'value' }),
         [
-          h('span', {}, ['more text'])
-        ]
+          h('span', {}, ['more text']),
+        ],
       ], [
         null,
-        h({ template: 'abc' }, { class: 'dark' })
-      ]
+        h({ template: 'abc' }, { class: 'dark' }),
+      ],
     ])
 
     compareChildren(nodes, [
@@ -612,12 +605,12 @@ describe('replaceChildren', () => {
         h('section', null, 'text node'),
         h('section', null, h('div', { class: 'bold', attribute: 'value' })),
         [
-          h('section', null, h('span', {}, ['more text']))
-        ]
+          h('section', null, h('span', {}, ['more text'])),
+        ],
       ], [
         null,
-        h('section', null, h({ template: 'abc' }, { class: 'dark' }))
-      ]
+        h('section', null, h({ template: 'abc' }, { class: 'dark' })),
+      ],
     ])
   })
 
@@ -795,7 +788,7 @@ describe('betweenChildren', () => {
     expect(Array.isArray(nodes)).toBe(true)
     expect(nodes).toHaveLength(4)
 
-    compareChildren(nodes, [h('div'), 'hello', h('strong', null,['world']), h('span')])
+    compareChildren(nodes, [h('div'), 'hello', h('strong', null, ['world']), h('span')])
     compareChildren(startNodes, [h('div'), h('span')])
   })
 
@@ -812,7 +805,7 @@ describe('betweenChildren', () => {
         false,
         h({ template: 'abc' }),
         null,
-        h(() => 'def')
+        h(() => 'def'),
       ]
     }
 
@@ -848,7 +841,7 @@ describe('betweenChildren', () => {
       h({ template: 'abc' }),
       null,
       h('hr'),
-      h(() => 'def')
+      h(() => 'def'),
     ])
   })
 
@@ -865,7 +858,7 @@ describe('betweenChildren', () => {
         false,
         h({ template: 'abc' }),
         null,
-        h(() => 'def')
+        h(() => 'def'),
       ]
     }
 
@@ -882,7 +875,7 @@ describe('betweenChildren', () => {
       element: true,
       component: true,
       text: true,
-      comment: true
+      comment: true,
     })
 
     expect(count).toBe(8)
@@ -909,7 +902,7 @@ describe('betweenChildren', () => {
       h('hr'),
       null,
       h('hr'),
-      h(() => 'def')
+      h(() => 'def'),
     ])
   })
 
@@ -925,7 +918,7 @@ describe('betweenChildren', () => {
         true,
         false,
         h({ template: 'abc' }),
-        h(() => 'def')
+        h(() => 'def'),
       ]
     }
 
@@ -942,7 +935,7 @@ describe('betweenChildren', () => {
 
       return h('hr')
     }, {
-      element: true
+      element: true,
     })
 
     expect(count).toBe(1)
@@ -960,7 +953,7 @@ describe('betweenChildren', () => {
       true,
       false,
       h({ template: 'abc' }),
-      h(() => 'def')
+      h(() => 'def'),
     ])
   })
 
@@ -976,7 +969,7 @@ describe('betweenChildren', () => {
         true,
         false,
         h({ template: 'abc' }),
-        h(() => 'def')
+        h(() => 'def'),
       ]
     }
 
@@ -993,7 +986,7 @@ describe('betweenChildren', () => {
 
       return [h({ template: 'ghi' }), h({ template: 'jkl' })]
     }, {
-      component: true
+      component: true,
     })
 
     expect(count).toBe(1)
@@ -1012,7 +1005,7 @@ describe('betweenChildren', () => {
       h({ template: 'abc' }),
       h({ template: 'ghi' }),
       h({ template: 'jkl' }),
-      h(() => 'def')
+      h(() => 'def'),
     ])
   })
 
@@ -1028,7 +1021,7 @@ describe('betweenChildren', () => {
         true,
         false,
         h({ template: 'abc' }),
-        h(() => 'def')
+        h(() => 'def'),
       ]
     }
 
@@ -1048,7 +1041,7 @@ describe('betweenChildren', () => {
 
       return ['hello', 24]
     }, {
-      text: true
+      text: true,
     })
 
     expect(count).toBe(1)
@@ -1067,7 +1060,7 @@ describe('betweenChildren', () => {
       true,
       false,
       h({ template: 'abc' }),
-      h(() => 'def')
+      h(() => 'def'),
     ])
   })
 
@@ -1083,7 +1076,7 @@ describe('betweenChildren', () => {
         true,
         false,
         h({ template: 'abc' }),
-        h(() => 'def')
+        h(() => 'def'),
       ]
     }
 
@@ -1100,7 +1093,7 @@ describe('betweenChildren', () => {
 
       return [null, null]
     }, {
-      comment: true
+      comment: true,
     })
 
     expect(count).toBe(1)
@@ -1119,7 +1112,7 @@ describe('betweenChildren', () => {
       null,
       false,
       h({ template: 'abc' }),
-      h(() => 'def')
+      h(() => 'def'),
     ])
   })
 
@@ -1129,7 +1122,7 @@ describe('betweenChildren', () => {
     const getStartNodes = () => {
       return [
         createCommentVNode('a'),
-        createCommentVNode('b')
+        createCommentVNode('b'),
       ]
     }
 
@@ -1149,7 +1142,7 @@ describe('betweenChildren', () => {
 
       return createCommentVNode('c')
     }, {
-      comment: true
+      comment: true,
     })
 
     expect(count).toBe(1)
@@ -1177,16 +1170,16 @@ describe('betweenChildren', () => {
           'some text',
           [
             h('span'),
-            h('p')
+            h('p'),
           ],
           h('a'),
           [
             'text',
             [
-              h('strong')
-            ]
-          ]
-        ]
+              h('strong'),
+            ],
+          ],
+        ],
       ]
     }
 
@@ -1217,7 +1210,7 @@ describe('betweenChildren', () => {
           h('hr'),
           h('span'),
           h('hr'),
-          h('p')
+          h('p'),
         ],
         h('hr'),
         h('a'),
@@ -1226,10 +1219,10 @@ describe('betweenChildren', () => {
           'text',
           [
             h('hr'),
-            h('strong')
-          ]
-        ]
-      ]
+            h('strong'),
+          ],
+        ],
+      ],
     ])
   })
 
@@ -1266,7 +1259,7 @@ describe('someChild', () => {
 
     let count = 0
 
-    let out = someChild(startNodes, node => {
+    let out = someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       count++
       return false
@@ -1277,7 +1270,7 @@ describe('someChild', () => {
 
     count = 0
 
-    out = someChild(startNodes, node => {
+    out = someChild(startNodes, (node) => {
       count++
       return isText(node)
     })
@@ -1287,7 +1280,7 @@ describe('someChild', () => {
 
     count = 0
 
-    out = someChild(startNodes, node => {
+    out = someChild(startNodes, (node) => {
       count++
       return node.type === 'span'
     })
@@ -1301,7 +1294,7 @@ describe('someChild', () => {
 
     const calledFor: VNode[] = []
 
-    let out = someChild(startNodes, node => {
+    let out = someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1316,7 +1309,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    out = someChild(startNodes, node => {
+    out = someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return node.type === 'span'
@@ -1330,7 +1323,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    out = someChild(startNodes, node => {
+    out = someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return isElement(node)
@@ -1348,7 +1341,7 @@ describe('someChild', () => {
 
     const calledFor: VNode[] = []
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1358,7 +1351,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1368,7 +1361,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1378,7 +1371,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1388,7 +1381,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1398,7 +1391,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1408,7 +1401,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1418,7 +1411,7 @@ describe('someChild', () => {
 
     calledFor.length = 0
 
-    someChild(startNodes, node => {
+    someChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1434,7 +1427,7 @@ describe('everyChild', () => {
 
     const calledFor: VNode[] = []
 
-    let out = everyChild(startNodes, node => {
+    let out = everyChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return true
@@ -1449,7 +1442,7 @@ describe('everyChild', () => {
 
     calledFor.length = 0
 
-    out = everyChild(startNodes, node => {
+    out = everyChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return node.type === 'a'
@@ -1468,7 +1461,7 @@ describe('eachChild', () => {
 
     const calledFor: VNode[] = []
 
-    const out = eachChild(startNodes, node => {
+    const out = eachChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
 
@@ -1491,7 +1484,7 @@ describe('findChild', () => {
 
     const calledFor: VNode[] = []
 
-    let out = findChild(startNodes, node => {
+    let out = findChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return false
@@ -1506,7 +1499,7 @@ describe('findChild', () => {
 
     calledFor.length = 0
 
-    out = findChild(startNodes, node => {
+    out = findChild(startNodes, (node) => {
       expect(isVNode(node)).toBe(true)
       calledFor.push(node)
       return isElement(node)
@@ -1527,7 +1520,7 @@ describe('isEmpty', () => {
     expect(isEmpty([' '])).toBe(true)
     expect(isEmpty([' A '])).toBe(false)
     expect(isEmpty(['\n\t\r'])).toBe(true)
-    expect(isEmpty(['\u00a0'])).toBe(false)
+    expect(isEmpty(['\u00A0'])).toBe(false)
     expect(isEmpty([null, false, true])).toBe(true)
     expect(isEmpty([h('div')])).toBe(false)
     expect(isEmpty([h({ template: 'abc' })])).toBe(false)
