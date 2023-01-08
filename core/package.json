@@ -4,7 +4,7 @@
   "description": "Utilities for manipulating Vue 3 VNodes",
   "author": "Elone Hoo <hi@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/elonehoo/vnode-utilreadme",
+  "homepage": "https://github.com/elonehoo/vnode-util#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elonehoo/vnode-util.git"
