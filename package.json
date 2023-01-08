@@ -17,6 +17,9 @@
     "build:fix": "pnpm -C core run build:fix",
     "test": "pnpm -C test run test",
     "coverage": "pnpm -C test run coverage",
+    "docs:dev":"pnpm -C docs run dev",
+    "docs:build":"pnpm -C docs run build",
+    "docs:serve":"pnpm -C docs run serve",
     "release": "bumpp package.json core/package.json --commit --push --tag && pnpm -r publish --access public",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
