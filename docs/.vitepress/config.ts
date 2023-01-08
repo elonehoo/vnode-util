@@ -58,35 +58,12 @@ export default defineConfig({
               {
                 text:'Guide',
                 items:[
-                  {
-                    text:'Getting Started',
-                    link:'/guide/'
-                  }
+                  { text:'Why vnode-util', link:'/guide/why' },
+                  { text:'Getting Started', link:'/guide/' },
+                  { text:'Iterators', link:'/guide/iterators' },
+                  { text:'Adding props', link:'/guide/adding-props' },
                 ]
               },
-              {
-                text:'Functions',
-                items:[
-                  {
-                    text:'useForm',
-                    items:[
-                      {text:'useForm',link:'/use-form/'},
-                      {text:'register',link:'/use-form/register'},
-                      {text:'unregister',link:'/use-form/unregister'},
-                      {text:'formState',link:'/use-form/formState'},
-                      {text:'handleSubmit',link:'/use-form/handleSubmit'},
-                      {text:'reset',link:'/use-form/reset'},
-                      {text:'setError',link:'/use-form/setError'},
-                      {text:'clearErrors',link:'/use-form/clearErrors'},
-                      {text:'setValue',link:'/use-form/setValue'},
-                      {text:'setFocus',link:'/use-form/setFocus'},
-                      {text:'getValues',link:'/use-form/getValues'},
-                      {text:'getFieldState',link:'/use-form/getFieldState'},
-                      {text:'trigger',link:'/use-form/trigger'},
-                    ]
-                  },
-                ]
-              }
             ]
         }
     },
