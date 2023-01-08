@@ -25,9 +25,13 @@ const newChildren = addProps(children, (vnode) => {
 })
 ```
 
-`addProps()` behaves much like the iterator functions discussed previously, skipping over fragments and walking their children instead. Text nodes and comment nodes are also skipped by default as they don't have props. The callback will be invoked for nodes corresponding to elements or components, with the node being passed to the callback as the first argument. In the example above the VNode isn't used by the callback, it just returns an object containing the props to add.
+`addProps()` behaves much like the iterator functions discussed previously, skipping over fragments and walking their children instead. Text nodes and comment nodes are also skipped by default as they don't have props. The callback will be invoked for nodes corresponding to elements or components, with the node being passed to the callback as the first argument. In the example above the
+
+VNode isn't used by the callback, it just returns an object containing the props to add.
 `vnode-util` will use [`cloneVNode()`](https://vuejs.org/api/render-function.html#clonevnode) to take copies of any VNodes that are modified, leaving the original tree unchanged.
+
 VNodes represent event listeners using props that begin with `on`, followed by the event name in PascalCase. So, for example, a listener for the event `update:modelValue` can be added using the prop `onUpdate:modelValue`.
+
 ```js
 import { addProps } from 'vnode-util'
 // Inside a render function
@@ -40,4 +44,5 @@ const newChildren = addProps(children, (vnode) => {
   }
 })
 ```
+
 Added props will be merged using [`mergeProps()`](https://vuejs.org/api/render-function.html#mergeprops), with special handling for event listeners, `class` and `style`. Likewise, if the props include a `ref` property it will be added to any existing `ref`, rather than replacing it.

@@ -62,6 +62,10 @@ export default defineConfig({
                   { text:'Getting Started', link:'/guide/' },
                   { text:'Iterators', link:'/guide/iterators' },
                   { text:'Adding props', link:'/guide/adding-props' },
+                  { text:'Inserting new nodes', link:'/guide/inserting-new-nodes' },
+                  { text:'Replacing nodes', link:'/guide/replacing-nodes' },
+                  { text:'Checking the VNode type', link:'/guide/checking-the-vnode-type' },
+                  { text:'Other helpers', link:'/guide/other-helpers' },
                 ]
               },
             ]
