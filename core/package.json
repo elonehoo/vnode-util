@@ -1,0 +1,46 @@
+{
+  "name": "vnode-util",
+  "version": "0.0.0",
+  "description": "Utilities for manipulating Vue 3 VNodes",
+  "author": "Elone Hoo <hi@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/elonehoo/vnode-utilreadme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elonehoo/vnode-util.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elonehoo/vnode-util/issues"
+  },
+  "keywords": [
+    "vue",
+    "vnode",
+    "vdom",
+    "util"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "build:fix": "esno scripts/postbuild.ts"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "tsup": "^6.5.0",
+    "vite": "^4.0.4"
+  }
+}
