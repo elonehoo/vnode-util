@@ -27,7 +27,7 @@ export default defineConfig({
     themeConfig: {
         logo: '/logo.svg',
         editLink: {
-            pattern: 'https://github.com/elonehoo/vue-hooks-form/tree/main/docs/:path',
+            pattern: 'https://github.com/elonehoo/vnode-util/tree/main/docs/:path',
             text: 'Suggest changes to this page',
         },
         socialLinks: [
