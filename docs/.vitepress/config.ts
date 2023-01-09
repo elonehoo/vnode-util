@@ -43,7 +43,7 @@ export default defineConfig({
             { text: 'Guide', link: '/guide/' },
             { text: 'Api', link: '/api/' },
             { text: 'Examples', link: '/examples/' },
-            { text: 'Appendices', link: '/appendices/' },
+            { text: 'Appendices', link: '/appendices/some-notes-on-vnodes' },
             {
                 text: `v${version}`,
                 items: [
@@ -79,6 +79,13 @@ export default defineConfig({
                 text:'Examples',
                 items:[
                   { text:'Examples Reference', link:'/examples/' },
+                ]
+              },
+              {
+                text:'Appendices',
+                items:[
+                  { text:'Some notes on VNodes', link:'/appendices/some-notes-on-vnodes' },
+                  { text:'VNode manipulation and components', link:'/appendices/vnode-manipulation-and-components' },
                 ]
               },
             ]
