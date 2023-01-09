@@ -404,7 +404,7 @@ The passed array and its contents will be left unmodified. Any fragment nodes wi
 
 ### See also
 
-* [Example - Wrap children](/examples#wrap-children)
+* [Example - Wrap children](/examples/#wrap-children)
 * [Guide - Replacing nodes](/guide/replacing-nodes)
 
 ## someChild()

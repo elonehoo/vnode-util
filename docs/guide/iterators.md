@@ -36,7 +36,7 @@ The iterator callback will be passed a fully instantiated VNode, even if the ori
 
 Fragment nodes are never passed to the iterator callback. Instead, the iterator will iterate through the children of the fragment. The iterators do not walk the children of any other node type, just fragments. They are only attempting to iterate what would generally be considered the 'top-level' VNodes.
 
-The optional third argument for each iterator is an object containing [iteration options](/api.html#iterationoptions). The iterators will usually pass all node types to the callback, but the options can be used to restrict iteration to specific types of node. The available node types are `component`, `element`, `text`, `comment` and `static`.
+The optional third argument for each iterator is an object containing [iteration options](/api/#iterationoptions). The iterators will usually pass all node types to the callback, but the options can be used to restrict iteration to specific types of node. The available node types are `component`, `element`, `text`, `comment` and `static`.
 So if we only want to iterate over `text` nodes we can pass `{ text: true }` as the third argument.
 There are constants available for the most common combinations: `ALL_VNODES`, `SKIP_COMMENTS` and `COMPONENTS_AND_ELEMENTS`. The iterators all default to `ALL_VNODES`.
 
@@ -57,6 +57,6 @@ function ChildComponent(_, { slots }) {
 ```
 
 The example uses `SKIP_COMMENTS` to skip over the comment nodes created by the falsy `v-if` conditions.
-While this example needs to display the count, a more common scenario involves only needing to know whether the count is 0. The [`isEmpty()`](/api.html#isempty) helper can be used in that case.
+While this example needs to display the count, a more common scenario involves only needing to know whether the count is 0. The [`isEmpty()`](/api/#isempty) helper can be used in that case.
 
 It is worth noting that the count here is just a count of the VNodes. It is not necessarily an accurate count of the number of `<li>` elements. If any of the children had been a component it would have added 1 to the count, even though a component wouldn't necessarily render exactly one `<li>` element.

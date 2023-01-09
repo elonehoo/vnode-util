@@ -27,12 +27,12 @@ The value passed to `getType()` doesn't have to be a fully instantiated VNode. I
 
 There are also helpers for checking an individual type:
 
-* [isComponent()](/api.html#iscomponent)
-* [isElement()](/api.html#iselement)
-* [isText()](/api.html#istext)
-* [isComment()](/api.html#iscomment)
-* [isFragment()](/api.html#isfragment)
-* [isStatic()](/api.html#isstatic)
+* [isComponent()](/api/#iscomponent)
+* [isElement()](/api/#iselement)
+* [isText()](/api/#istext)
+* [isComment()](/api/#iscomment)
+* [isFragment()](/api/#isfragment)
+* [isStatic()](/api/#isstatic)
 
 For example:
 
@@ -44,8 +44,8 @@ const children = replaceChildren(slotVNodes, (vnode) => {
 })
 ```
 
-It should be noted that most of the callbacks can be pre-filtered by passing [`IterationOptions`](/api.html#iterationoptions), so it's only necessary to do explicit checks if the callback needs to handle multiple types.
+It should be noted that most of the callbacks can be pre-filtered by passing [`IterationOptions`](/api/#iterationoptions), so it's only necessary to do explicit checks if the callback needs to handle multiple types.
 
-Component VNodes can be split into two further categories using [isStatefulComponent()](/api.html#isstatefulcomponent) and [isFunctionalComponent()](/api.html#isfunctionalcomponent). The component itself is available via the VNode's `type` property. For an element VNode the `type` will be the tag name.
+Component VNodes can be split into two further categories using [isStatefulComponent()](/api/#isstatefulcomponent) and [isFunctionalComponent()](/api/#isfunctionalcomponent). The component itself is available via the VNode's `type` property. For an element VNode the `type` will be the tag name.
 
 `getText()` can be used to read the text from a text node. As well as text VNodes, it also considers strings and numbers to be valid text nodes, consistent with `isText()`. If the passed value is not a valid text node then `undefined` will be returned.

@@ -26,6 +26,9 @@ jobs:
       - name: Run Install package
         run: pnpm install
 
+      - name: Core Build
+        run: pnpm run build
+
       - name: Run docs Build
         run: pnpm run docs:build
 

@@ -25,4 +25,4 @@ As with the other helpers, fragment VNodes will be skipped and their children wi
 
 If the callback returns an array it will not be treated as a fragment, the individual children will be added in place of the current node. Any arrays nested within the returned array will be treated as fragments, just as they would when passing children to `h()`. When making changes to the tree structure it is important to consider the impact of fragments and `key` values to ensure that the VNodes get paired up correctly across re-renders.
 
-`replaceChildren()` takes an optional third argument specifying [iteration options](/api.html#iterationoptions), much like with the [iterators](/guide/iterators.html). Unlike those iterators, the default value for `replaceChildren()` is `SKIP_COMMENTS`.
+`replaceChildren()` takes an optional third argument specifying [iteration options](/api/#iterationoptions), much like with the [iterators](/guide/iterators.html). Unlike those iterators, the default value for `replaceChildren()` is `SKIP_COMMENTS`.
