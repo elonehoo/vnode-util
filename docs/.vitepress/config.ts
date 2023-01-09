@@ -41,7 +41,7 @@ export default defineConfig({
         },
         nav: [
             { text: 'Guide', link: '/guide/' },
-            { text: 'Reference', link: '/reference/' },
+            { text: 'Api', link: '/api/' },
             { text: 'Appendices', link: '/appendices/' },
             {
                 text: `v${version}`,
@@ -66,6 +66,18 @@ export default defineConfig({
                   { text:'Replacing nodes', link:'/guide/replacing-nodes' },
                   { text:'Checking the VNode type', link:'/guide/checking-the-vnode-type' },
                   { text:'Other helpers', link:'/guide/other-helpers' },
+                ]
+              },
+              {
+                text:'Api',
+                items:[
+                  { text:'Api Reference', link:'/api/' },
+                ]
+              },
+              {
+                text:'Examples',
+                items:[
+                  { text:'Examples Reference', link:'/examples/' },
                 ]
               },
             ]

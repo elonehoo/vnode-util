@@ -51,6 +51,7 @@ importers:
       unplugin-vue-components: ^0.22.12
       vite: ^4.0.4
       vitepress: 1.0.0-alpha.35
+      vnode-util: workspace:*
       workbox-window: ^6.5.4
     dependencies:
       '@iconify-json/carbon': 1.1.13
@@ -64,6 +65,7 @@ importers:
       unplugin-vue-components: 0.22.12_vue@3.2.45
       vite: 4.0.4
       vitepress: 1.0.0-alpha.35_2r467mdhb7mblpaox4bg7fatdi
+      vnode-util: link:../core
       workbox-window: 6.5.4
 
   test:
