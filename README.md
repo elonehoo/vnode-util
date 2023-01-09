@@ -14,7 +14,9 @@ Utilities for manipulating Vue 3 VNodes
   <a href="https://www.npmjs.com/package/vnode-util"><img src="https://img.shields.io/npm/v/vnode-util?color=43B36B&label="></a>
 <p>
 
-
+<p align="center">
+ <a href="https://vnode-util.elonehoo.me">Documentation</a> | <a href="https://vnode-util.elonehoo.me/guide/">Getting Started</a> | <a href="https://stackblitz.com/edit/vnode-util?file=src/App.vue">Playground</a>
+</p>
 <br>
 <br>
 
