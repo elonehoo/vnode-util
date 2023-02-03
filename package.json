@@ -27,8 +27,8 @@
   "dependencies": {
     "@antfu/eslint-config": "^0.35.1",
     "eslint": "^8.33.0",
-    "typescript": "^4.9.4",
-    "vue": "^3.2.45"
+    "typescript": "^4.9.5",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
