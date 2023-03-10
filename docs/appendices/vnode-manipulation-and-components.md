@@ -34,11 +34,15 @@ It can be tempting to use VNode manipulation to implement tightly coupled compon
 ```vue
 <template>
   <radio-group v-model="boundValue">
-    <radio-button :value="null">None</radio-button>
+    <radio-button :value="null">
+      None
+    </radio-button>
     <radio-button
       v-for="item in ['First', 'Second', 'Third']"
       :value="item"
-    >{{ item }}</radio-button>
+    >
+      {{ item }}
+    </radio-button>
   </radio-group>
 </template>
 ```
@@ -54,7 +58,7 @@ This component can (and probably should) be implemented using `provide` and `inj
 ```js
 return addProps(this.$slots.default(), () => {
   return {
-    modelValue: this.modelValue,
+    'modelValue': this.modelValue,
     'onUpdate:modelValue': (newValue) => {
       this.$emit('update:modelValue', newValue)
     }

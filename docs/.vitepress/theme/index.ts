@@ -8,6 +8,6 @@ import LiveExample from '../components/LiveExample.vue'
 export default {
   ...Theme,
   enhanceApp({ app }: { app: App }) {
-    app.component('live-example', LiveExample)
-  }
+    app.component('LiveExample', LiveExample)
+  },
 }

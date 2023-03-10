@@ -17,24 +17,23 @@ export default {
 
         return {
           ref: (item) => {
-            if (item) {
+            if (item)
               childRefs[refIndex] = item
-            } else if (childRefs.length > childCount) {
+            else if (childRefs.length > childCount)
               childRefs.length = childCount
-            }
-          }
+          },
         }
       })
 
       return [
         children,
         h('pre', [
-          `outerHTML:\n`,
+          'outerHTML:\n',
           childRefs.map(
-            (el, i) => `${i}: ${el.outerHTML}`
-          ).join('\n')
-        ])
+            (el, i) => `${i}: ${el.outerHTML}`,
+          ).join('\n'),
+        ]),
       ]
     }
-  }
+  },
 }

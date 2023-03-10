@@ -1,12 +1,12 @@
 <script setup>
 const props = defineProps({
   expanded: {
-    type: Boolean
+    type: Boolean,
   },
   title: {
     required: true,
-    type: String
-  }
+    type: String,
+  },
 })
 const emit = defineEmits(['update:expanded'])
 const toggle = () => {
@@ -16,8 +16,12 @@ const toggle = () => {
 
 <template>
   <div class="accordion-panel" :class="{ expanded }">
-    <div class="header" @click="toggle">{{ title }}</div>
-    <div v-if="expanded" class="body"><slot /></div>
+    <div class="header" @click="toggle">
+      {{ title }}
+    </div>
+    <div v-if="expanded" class="body">
+      <slot />
+    </div>
   </div>
 </template>
 

@@ -7,11 +7,11 @@ export default {
   render() {
     return addProps(this.$slots.default(), () => {
       return {
-        modelValue: this.modelValue,
+        'modelValue': this.modelValue,
         'onUpdate:modelValue': (newValue) => {
           this.$emit('update:modelValue', newValue)
-        }
+        },
       }
     })
-  }
+  },
 }

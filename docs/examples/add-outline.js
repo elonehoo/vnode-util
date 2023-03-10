@@ -4,7 +4,7 @@ import { addProps } from 'vnode-util'
 export default function AddOutline(_, { slots }) {
   const children = addProps(slots.default(), () => {
     return {
-      class: 'child-outline'
+      class: 'child-outline',
     }
   })
 

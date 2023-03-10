@@ -26,7 +26,7 @@ jobs:
           node-version: latest
 
       - name: Install
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Core Build
         run: pnpm run build

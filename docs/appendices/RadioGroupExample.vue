@@ -8,9 +8,13 @@ const boundValue = ref(null)
 <template>
   <div>Bound value: {{ boundValue }}</div>
   <div>
-  <radio-group v-model="boundValue">
-    <radio-button :value="null">None</radio-button>
-    <radio-button v-for="item in ['First', 'Second', 'Third']" :value="item">{{ item }}</radio-button>
-  </radio-group>
+    <RadioGroup v-model="boundValue">
+      <RadioButton :value="null">
+        None
+      </RadioButton>
+      <RadioButton v-for="item in ['First', 'Second', 'Third']" :value="item">
+        {{ item }}
+      </RadioButton>
+    </RadioGroup>
   </div>
 </template>

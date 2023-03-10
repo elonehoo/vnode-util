@@ -11,21 +11,21 @@ export default {
         return {
           // Using the index is overly simplistic
           // but suffices for this example
-          expanded: index === expandedPanel.value,
+          'expanded': index === expandedPanel.value,
           'onUpdate:expanded': (expanded) => {
-            if (expanded) {
+            if (expanded)
               expandedPanel.value = index
-            } else if (index === expandedPanel.value) {
+            else if (index === expandedPanel.value)
               expandedPanel.value = null
-            }
-          }
+          },
         }
       })
-      return h('div', { class : 'accordion' }, children)
+      return h('div', { class: 'accordion' }, children)
     }
-  }
+  },
 }
 </script>
+
 <style scoped>
 .accordion {
   background: #eee;

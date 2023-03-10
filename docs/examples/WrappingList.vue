@@ -2,12 +2,12 @@
 import { h } from 'vue'
 import { replaceChildren } from 'vnode-util'
 export default {
-  render () {
+  render() {
     const newChildren = replaceChildren(this.$slots.default(), (vnode) => {
       return h('div', { class: 'wrapper' }, [vnode])
     })
     return h('div', { class: 'list' }, newChildren)
-  }
+  },
 }
 </script>
 

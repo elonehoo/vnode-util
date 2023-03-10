@@ -4,11 +4,15 @@ import ResultsList from './results-list'
 
 <template>
   <pre>[]</pre>
-  <results-list>
-    <li v-for="result in []">{{ result }}</li>
-  </results-list>
+  <ResultsList>
+    <li v-for="result in []">
+      {{ result }}
+    </li>
+  </ResultsList>
   <pre>['red', 'green', 'blue']</pre>
-  <results-list>
-    <li v-for="result in ['red', 'green', 'blue']">{{ result }}</li>
-  </results-list>
+  <ResultsList>
+    <li v-for="result in ['red', 'green', 'blue']">
+      {{ result }}
+    </li>
+  </ResultsList>
 </template>

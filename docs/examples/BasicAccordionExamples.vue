@@ -4,16 +4,16 @@ import BasicAccordionPanel from './BasicAccordionPanel.vue'
 </script>
 
 <template>
-  <basic-accordion>
-    <basic-accordion-panel title="First">
+  <BasicAccordion>
+    <BasicAccordionPanel title="First">
       First panel content
-    </basic-accordion-panel>
-    <basic-accordion-panel title="Second">
+    </BasicAccordionPanel>
+    <BasicAccordionPanel title="Second">
       Second panel content
-    </basic-accordion-panel>
-    <basic-accordion-panel title="Third">
+    </BasicAccordionPanel>
+    <BasicAccordionPanel title="Third">
       Third panel content
-    </basic-accordion-panel>
-  </basic-accordion>
+    </BasicAccordionPanel>
+  </BasicAccordion>
 </template>
 Footer

@@ -44,7 +44,7 @@ The following example defines a functional component that counts the number of c
 
 ```js
 import { h } from 'vue'
-import { eachChild, SKIP_COMMENTS } from 'vnode-util'
+import { SKIP_COMMENTS, eachChild } from 'vnode-util'
 function ChildComponent(_, { slots }) {
   const children = slots.default?.() ?? []
   let count = 0

@@ -38,7 +38,7 @@ import { addProps } from 'vnode-util'
 const children = slots.default?.() || []
 const newChildren = addProps(children, (vnode) => {
   return {
-    'onUpdate:modelValue'(newValue) {
+    'onUpdate:modelValue': function (newValue) {
       console.log(`update: ${newValue}`)
     }
   }

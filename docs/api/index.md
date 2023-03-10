@@ -181,13 +181,13 @@ Returns the text content of a text node. If the passed value is not a text node 
 
 ```ts
 function getType(vnode: any):
-  'comment' |
-  'component' |
-  'element' |
-  'fragment' |
-  'static' |
-  'text' |
-  undefined
+'comment' |
+'component' |
+'element' |
+'fragment' |
+'static' |
+'text' |
+undefined
 ```
 
 ### Description
@@ -365,7 +365,7 @@ Returns `true` if the passed value is considered to be text. This could be a tex
 ### Type
 
 ```ts
-type IterationOptions = {
+interface IterationOptions {
   component?: boolean
   comment?: boolean
   element?: boolean

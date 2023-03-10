@@ -41,9 +41,9 @@ export default {
 
       // Wrap text nodes in a `<div>`
       children = replaceChildren(children, (vnode) => {
-        if (isText(vnode)) {
+        if (isText(vnode))
           return h('div', vnode)
-        }
+
       })
 
       // Add the 'my-child' class to all children

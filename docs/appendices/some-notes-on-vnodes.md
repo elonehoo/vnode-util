@@ -11,7 +11,9 @@ But even if you do understand the `key` attribute, it can be very easy to overlo
 
 ```vue
 <template>
-  <div v-if="x">A</div>
+  <div v-if="x">
+    A
+  </div>
   <div>B</div>
 </template>
 ```
@@ -25,9 +27,9 @@ import { h } from 'vue'
 export default {
   render() {
     const nodes = []
-    if (this.x) {
+    if (this.x)
       nodes.push(h('div', 'A'))
-    }
+
     nodes.push(h('div', 'B'))
     return nodes
   },
@@ -63,9 +65,9 @@ import { h } from 'vue'
 export default {
   render() {
     const nodes = []
-    if (this.x) {
+    if (this.x)
       nodes.push(h('div', { key: 'A' }, 'A'))
-    }
+
     nodes.push(h('div', { key: 'B' }, 'B'))
     return nodes
   },

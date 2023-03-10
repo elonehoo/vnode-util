@@ -9,9 +9,9 @@ import { replaceChildren } from 'vnode-util'
 const children = slots.default?.() || []
 const newChildren = replaceChildren(children, (vnode) => {
   // If the child is already a <li>, ensure it has the 'list-item' class
-  if (vnode.type === 'li') {
+  if (vnode.type === 'li')
     return cloneVNode(vnode, { class: 'list-item' })
-  }
+
   // If the child isn't already a <li>, wrap it in one
   return h('li', { class: 'list-item' }, [vnode])
 })
