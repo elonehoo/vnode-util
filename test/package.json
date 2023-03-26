@@ -16,13 +16,13 @@
     "coverage": "vitest run --coverage --environment jsdom"
   },
   "dependencies": {
-    "@types/jsdom": "^21.1.0",
-    "@vitejs/plugin-vue": "^4.0.0",
-    "@vitest/coverage-c8": "^0.29.2",
-    "@vue/test-utils": "^2.3.1",
-    "jsdom": "^21.1.0",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.2",
+    "@types/jsdom": "^21.1.1",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vitest/coverage-c8": "^0.29.7",
+    "@vue/test-utils": "^2.3.2",
+    "jsdom": "^21.1.1",
+    "vite": "^4.2.1",
+    "vitest": "^0.29.7",
     "vnode-util": "workspace:*"
   }
 }
