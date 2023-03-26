@@ -32,6 +32,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "prepublishOnly": "pnpm run build",
     "dev": "tsup --watch src",
     "build:fix": "esno scripts/postbuild.ts"
   },
