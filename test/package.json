@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": "true",
   "description": "Utilities for manipulating Vue 3 VNodes",
-  "author": "Elone Hoo <hi@gmail.com>",
+  "author": "Elone Hoo <hi@elonehoo.me>",
   "license": "MIT",
   "keywords": [
     "vue",
@@ -18,11 +18,11 @@
   "dependencies": {
     "@types/jsdom": "^21.1.1",
     "@vitejs/plugin-vue": "^4.1.0",
-    "@vitest/coverage-c8": "^0.29.7",
+    "@vitest/coverage-c8": "^0.30.0",
     "@vue/test-utils": "^2.3.2",
     "jsdom": "^21.1.1",
     "vite": "^4.2.1",
-    "vitest": "^0.29.7",
+    "vitest": "^0.30.0",
     "vnode-util": "workspace:*"
   }
 }

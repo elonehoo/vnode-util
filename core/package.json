@@ -2,7 +2,7 @@
   "name": "vnode-util",
   "version": "0.0.7",
   "description": "Utilities for manipulating Vue 3 VNodes",
-  "author": "Elone Hoo <hi@gmail.com>",
+  "author": "Elone Hoo <hi@elonehoo.me>",
   "license": "MIT",
   "homepage": "https://github.com/elonehoo/vnode-util#readme",
   "repository": {
