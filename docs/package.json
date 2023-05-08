@@ -18,15 +18,15 @@
   },
   "dependencies": {
     "@iconify-json/carbon": "^1.1.16",
-    "@unocss/reset": "^0.51.8",
+    "@unocss/reset": "^0.51.12",
     "@vitejs/plugin-vue": "^4.2.1",
     "@vueuse/core": "^10.1.2",
     "esno": "^0.16.3",
     "https-localhost": "^4.7.1",
     "jiti": "^1.18.2",
-    "unocss": "^0.51.8",
+    "unocss": "^0.51.12",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.3.4",
+    "vite": "^4.3.5",
     "vitepress": "1.0.0-alpha.75",
     "vnode-util": "workspace:*",
     "workbox-window": "^6.5.4"
