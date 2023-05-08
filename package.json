@@ -25,13 +25,13 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^0.38.5",
-    "eslint": "^8.39.0",
+    "@antfu/eslint-config": "^0.38.6",
+    "eslint": "^8.40.0",
     "typescript": "^5.0.4",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@types/node": "^18.16.3",
+    "@types/node": "^18.16.5",
     "bumpp": "^9.1.0",
     "chalk": "^5.2.0",
     "esno": "^0.16.3",
