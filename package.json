@@ -28,10 +28,10 @@
     "@antfu/eslint-config": "^0.38.6",
     "eslint": "^8.40.0",
     "typescript": "^5.0.4",
-    "vue": "^3.2.47"
+    "vue": "^3.3.2"
   },
   "devDependencies": {
-    "@types/node": "^18.16.5",
+    "@types/node": "^18.16.9",
     "bumpp": "^9.1.0",
     "chalk": "^5.2.0",
     "esno": "^0.16.3",
