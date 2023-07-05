@@ -17,18 +17,18 @@
     "serve": "vitepress serve"
   },
   "dependencies": {
-    "@iconify-json/carbon": "^1.1.17",
-    "@unocss/reset": "^0.52.5",
+    "@iconify-json/carbon": "^1.1.18",
+    "@unocss/reset": "^0.53.4",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vueuse/core": "^10.1.2",
+    "@vueuse/core": "^10.2.1",
     "esno": "^0.16.3",
     "https-localhost": "^4.7.1",
-    "jiti": "^1.18.2",
-    "unocss": "^0.52.5",
-    "unplugin-vue-components": "^0.25.0",
+    "jiti": "^1.19.1",
+    "unocss": "^0.53.4",
+    "unplugin-vue-components": "^0.25.1",
     "vite": "^4.3.9",
-    "vitepress": "1.0.0-beta.1",
+    "vitepress": "1.0.0-beta.5",
     "vnode-util": "workspace:*",
-    "workbox-window": "^6.6.0"
+    "workbox-window": "^7.0.0"
   }
 }
