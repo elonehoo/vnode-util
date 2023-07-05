@@ -314,7 +314,7 @@ export const betweenChildren = (
   let previousVNode: VNode | null = null
 
   return replaceChildrenInternal(children, (vnode) => {
-    let insertedNodes: VNode | VNodeArrayChildren | string | number | void
+    let insertedNodes: VNode | VNodeArrayChildren | string | number | void = ''
 
     if (previousVNode) {
       insertedNodes = callback(previousVNode, vnode)

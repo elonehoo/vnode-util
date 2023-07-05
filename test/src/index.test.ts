@@ -1196,7 +1196,7 @@ describe('betweenChildren', () => {
 
     expect(count).toBe(6)
     expect(Array.isArray(nodes)).toBe(true)
-    expect(nodes).toHaveLength(2)
+    expect(nodes).toHaveLength(3)
 
     compareChildren(startNodes, getStartNodes())
 
@@ -1245,8 +1245,8 @@ describe('betweenChildren', () => {
 
     expect(nodes).toHaveLength(2)
     expect(Array.isArray(nodes[0])).toBe(true)
-    expect(nodes[0]).toHaveLength(1)
-    expect(isVNode((nodes[0] as VNodeArrayChildren)[0])).toBe(true)
+    expect(nodes[0]).toHaveLength(2)
+    expect(isVNode((nodes[0] as VNodeArrayChildren)[0])).toBe(false)
     expect(nodes[1]).toBe(startNodes[1])
 
     expect(startNodes[0][0]).toBe('Text')
