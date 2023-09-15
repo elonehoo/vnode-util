@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import type { UserConfigExport } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
@@ -8,6 +7,6 @@ export default defineConfig({
   },
   plugins: [Vue()],
   test: {
-    environment: 'jsdom',
+    environment: 'happy-dom',
   },
-} as UserConfigExport & { test: any })
+})
