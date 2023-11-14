@@ -22,7 +22,7 @@
     "@unocss/reset": "^0.57.3",
     "@vitejs/plugin-vue": "^4.4.1",
     "@vueuse/core": "^10.6.0",
-    "esno": "^0.17.0",
+    "esno": "^4.0.0",
     "https-localhost": "^4.7.1",
     "jiti": "^1.21.0",
     "unocss": "^0.57.3",
