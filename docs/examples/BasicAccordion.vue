@@ -1,6 +1,7 @@
 <script>
 import { h, ref } from 'vue'
 import { addProps } from 'vnode-util'
+
 export default {
   setup(_, { slots }) {
     const expandedPanel = ref(null)

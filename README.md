@@ -43,7 +43,6 @@ export default {
       children = replaceChildren(children, (vnode) => {
         if (isText(vnode))
           return h('div', vnode)
-
       })
 
       // Add the 'my-child' class to all children

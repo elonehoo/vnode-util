@@ -9,7 +9,7 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:expanded'])
-const toggle = () => {
+function toggle() {
   emit('update:expanded', !props.expanded)
 }
 </script>

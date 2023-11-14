@@ -201,7 +201,9 @@ describe('addProps', () => {
 
     const startNodes = [
       createTree([
-        Fragment, null, [
+        Fragment,
+        null,
+        [
           'text node',
           ['div', { class: 'bold', attribute: 'value' }],
           [Fragment, null, [
@@ -210,7 +212,9 @@ describe('addProps', () => {
         ],
       ]),
       createTree([
-        Fragment, null, [
+        Fragment,
+        null,
+        [
           null,
           [{ template: 'abc' }, { class: 'dark' }],
         ],
@@ -238,7 +242,8 @@ describe('addProps', () => {
         [
           h('span', { class: 'red' }, 'more text'),
         ],
-      ], [
+      ],
+      [
         null,
         h({ template: 'abc' }, { class: 'dark red' }),
       ],
@@ -251,7 +256,8 @@ describe('addProps', () => {
         [
           h('span', {}, 'more text'),
         ],
-      ], [
+      ],
+      [
         null,
         h({ template: 'abc' }, { class: 'dark' }),
       ],
@@ -333,6 +339,7 @@ describe('addProps', () => {
     compareChildren(startNodes, getStartNodes())
   })
 
+  // eslint-disable-next-line test/no-identical-title
   it('addProps - 8983', () => {
     const startNodes = [h('div'), h('span', { class: 'red' })]
     const referenceNodes = [h('div'), h('span', { class: 'red' })]
@@ -561,7 +568,9 @@ describe('replaceChildren', () => {
 
     const startNodes = [
       createTree([
-        Fragment, null, [
+        Fragment,
+        null,
+        [
           'text node',
           ['div', { class: 'bold', attribute: 'value' }],
           [Fragment, null, [
@@ -570,7 +579,9 @@ describe('replaceChildren', () => {
         ],
       ]),
       createTree([
-        Fragment, null, [
+        Fragment,
+        null,
+        [
           null,
           [{ template: 'abc' }, { class: 'dark' }],
         ],
@@ -594,7 +605,8 @@ describe('replaceChildren', () => {
         [
           h('span', {}, ['more text']),
         ],
-      ], [
+      ],
+      [
         null,
         h({ template: 'abc' }, { class: 'dark' }),
       ],
@@ -607,7 +619,8 @@ describe('replaceChildren', () => {
         [
           h('section', null, h('span', {}, ['more text'])),
         ],
-      ], [
+      ],
+      [
         null,
         h('section', null, h({ template: 'abc' }, { class: 'dark' })),
       ],

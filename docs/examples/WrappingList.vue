@@ -1,6 +1,7 @@
 <script>
 import { h } from 'vue'
 import { replaceChildren } from 'vnode-util'
+
 export default {
   render() {
     const newChildren = replaceChildren(this.$slots.default(), (vnode) => {
