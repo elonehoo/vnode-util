@@ -1,6 +1,6 @@
 {
   "name": "vnode-util",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Utilities for manipulating Vue 3 VNodes",
   "author": "Elone Hoo <hi@elonehoo.me>",
   "license": "MIT",
