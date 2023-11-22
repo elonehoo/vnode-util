@@ -134,10 +134,11 @@ export function getType(vnode: unknown) {
 }
 
 function isEmptyObject(obj: Record<string, unknown>) {
-  // @ts-expect-error error
-  for (const prop in obj)
-    return false
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key))
+      return false
 
+  }
   return true
 }
 
