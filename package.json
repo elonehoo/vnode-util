@@ -1,6 +1,6 @@
 {
   "name": "@vnode-util/monorepo",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": "true",
   "description": "Utilities for manipulating Vue 3 VNodes",
   "author": "Elone Hoo <hi@elonehoo.me>",
