@@ -137,7 +137,6 @@ function isEmptyObject(obj: Record<string, unknown>) {
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key))
       return false
-
   }
   return true
 }
@@ -193,7 +192,7 @@ export const ALL_VNODES: IterationOptions = /* #__PURE__ */ freeze({
   comment: true,
 })
 
-function promoteToVNode(node: VNode | string | number | boolean | null | undefined | void, options: IterationOptions): VNode | null {
+function promoteToVNode(node: any, options: IterationOptions): VNode | null {
   const type = getType(node)
 
   // In practice, we don't call this function for fragments, but TS gets unhappy if we don't handle it
