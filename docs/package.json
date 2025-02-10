@@ -26,7 +26,7 @@
     "https-localhost": "^4.7.1",
     "jiti": "^2.4.2",
     "unocss": "^0.65.4",
-    "unplugin-vue-components": "^0.28.0",
+    "unplugin-vue-components": "^28.0.0",
     "vite": "^6.1.0",
     "vitepress": "1.6.3",
     "vnode-util": "workspace:*",
