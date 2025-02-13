@@ -31,8 +31,8 @@ Utilities for manipulating Vue 3 VNodes
 
 ```vue
 <script>
-import { h } from 'vue'
 import { addProps, betweenChildren, isText, replaceChildren } from 'vnode-util'
+import { h } from 'vue'
 
 export default {
   setup(_, { slots }) {

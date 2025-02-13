@@ -1,27 +1,25 @@
+import type { Component, VNode, VNodeArrayChildren, VNodeChild } from 'vue'
 import { describe, expect, it } from 'vitest'
 import {
   Comment,
-  type Component,
-  Fragment,
-  Text,
-  type VNode,
-  type VNodeArrayChildren,
-  type VNodeChild,
+
   createCommentVNode,
   createStaticVNode,
+
   createTextVNode,
   createVNode,
   defineAsyncComponent,
+  Fragment,
   h,
   isVNode,
   ref,
+  Text,
 } from 'vue'
 import {
-  ALL_VNODES,
-  COMPONENTS_AND_ELEMENTS,
-  SKIP_COMMENTS,
   addProps,
+  ALL_VNODES,
   betweenChildren,
+  COMPONENTS_AND_ELEMENTS,
   eachChild,
   everyChild,
   extractSingleChild,
@@ -38,6 +36,7 @@ import {
   isStatic,
   isText,
   replaceChildren,
+  SKIP_COMMENTS,
   someChild,
 } from '../../core/src/index'
 

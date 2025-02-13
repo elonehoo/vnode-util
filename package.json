@@ -1,5 +1,6 @@
 {
   "name": "@vnode-util/monorepo",
+  "type": "module",
   "version": "0.0.16",
   "private": "true",
   "description": "Utilities for manipulating Vue 3 VNodes",
@@ -28,11 +29,11 @@
     "vue": ">=3.2.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.16.0",
+    "@antfu/eslint-config": "^4.2.0",
     "@types/node": "^22.13.1",
-    "bumpp": "^9.11.1",
+    "bumpp": "^10.0.3",
     "chalk": "^5.4.1",
-    "eslint": "^9.20.0",
+    "eslint": "^9.20.1",
     "esno": "^4.8.0",
     "fast-glob": "^3.3.3",
     "typescript": "^5.7.3",

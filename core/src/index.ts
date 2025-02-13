@@ -1,19 +1,17 @@
+import type { Component, ComponentOptions, FunctionalComponent, VNode, VNodeArrayChildren, VNodeChild } from 'vue'
 import process from 'node:process'
 import {
-  Comment,
-  type Component,
-  type ComponentOptions,
-  Fragment,
-  type FunctionalComponent,
-  Static,
-  Text,
-  type VNode,
-  type VNodeArrayChildren,
-  type VNodeChild,
   cloneVNode,
+  Comment,
+
   createCommentVNode,
   createTextVNode,
+  Fragment,
+
   isVNode,
+  Static,
+  Text,
+
 } from 'vue'
 
 const DEV = process.env.NODE_ENV !== 'production'
