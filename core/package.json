@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
-    "tsup": "^8.5.0",
+    "tsup": "^8.5.1",
     "vite": "^7.2.2"
   }
 }
