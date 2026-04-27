@@ -36,7 +36,7 @@
     "eslint": "^10.2.1",
     "esno": "^4.8.0",
     "fast-glob": "^3.3.3",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "vue": "^3.5.33"
   }
 }
