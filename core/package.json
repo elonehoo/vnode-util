@@ -40,8 +40,8 @@
     "vue": "^3.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitejs/plugin-vue": "^6.0.8",
     "tsup": "^8.5.1",
-    "vite": "^8.0.10"
+    "vite": "^8.2.2"
   }
 }
