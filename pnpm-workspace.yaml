@@ -1,4 +1,21 @@
+# pnpm 12 only reads auth and registry settings from .npmrc.
+ignoreWorkspaceRootCheck: true
+# CI installs with --no-frozen-lockfile. pnpm 12's default 24h
+# minimumReleaseAge rejects a package published the same day
+# (ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION).
+minimumReleaseAge: 0
+minimumReleaseAgeExcludePrune: true
+trustPolicy: no-downgrade
+autoInstallPeers: true
+strictPeerDependencies: false
+shellEmulator: true
+
 packages:
   - core
   - test
   - docs
+
+# pnpm 12 fails install when a dependency build script is not approved
+# (ERR_PNPM_IGNORED_BUILDS). esbuild's postinstall is required.
+allowBuilds:
+  esbuild: true
