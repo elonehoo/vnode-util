@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/logo.svg" wigth='100px' height='100px' />
+  <img src="./public/logo.svg" alt="vnode-util logo" wigth='100px' height='100px' />
 </div>
 
 <h1 align="center">
@@ -11,7 +11,7 @@ Utilities for manipulating Vue 3 VNodes
 <p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vnode-util"><img src="https://img.shields.io/npm/v/vnode-util?color=43B36B&label="></a>
+  <a href="https://www.npmjs.com/package/vnode-util"><img src="https://img.shields.io/npm/v/vnode-util?color=43B36B&label=" alt="npm version"></a>
 <p>
 
 <p align="center">
