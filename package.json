@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.16",
   "private": "true",
-  "packageManager": "pnpm@12.14.0",
+  "packageManager": "pnpm@12.15.0",
   "description": "Utilities for manipulating Vue 3 VNodes",
   "author": "Elone Hoo <hi@elonehoo.me>",
   "license": "MIT",
