@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.16",
   "private": "true",
-  "packageManager": "pnpm@12.15.0",
+  "packageManager": "pnpm@12.21.0",
   "description": "Utilities for manipulating Vue 3 VNodes",
   "author": "Elone Hoo <hi@elonehoo.me>",
   "license": "MIT",
@@ -35,10 +35,10 @@
     "@typescript/native": "npm:typescript@^7.0.2",
     "bumpp": "^12.3.0",
     "chalk": "^6.0.1",
-    "eslint": "^10.13.0",
+    "eslint": "^10.15.0",
     "esno": "^4.8.0",
     "fast-glob": "^3.3.3",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "vue": "^3.5.44"
+    "vue": "^3.5.45"
   }
 }
