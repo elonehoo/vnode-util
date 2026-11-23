@@ -39,6 +39,6 @@
     "esno": "^4.8.0",
     "fast-glob": "^3.3.3",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "vue": "^3.5.45"
+    "vue": "^3.5.46"
   }
 }
